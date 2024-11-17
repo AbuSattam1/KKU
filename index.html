@@ -109,7 +109,7 @@
         
         <div class="result" id="result"></div>
         <div class="tips" id="tips"></div>
-        <div class="note" id="note">يرجى ملاحظة أن جميع الحسابات تقريبية وليست دقيقة بنسبة 100%.</div>
+        <div class="note" id="note">يرجى ملاحظة أن جميع الحسابات تقريبية وليست دقيقة بنسبة (100%).</div>
 
         <button class="share-button" onclick="shareSite()">شارك الموقع</button>
     </div>
@@ -125,7 +125,8 @@
     </div>
     
     <div class="group-note">
-        قروب من عمل طلاب متطوعين يهدف للإجابة على استفسارات الطلاب ولا يمثل جهة رسمية.
+        للدخول إلى مجموعة جامعة الملك خالد يرجى الضغط على الصورة
+        نود التنوية أن القروب من عمل طلاب متطوعين يهدف للإجابة على استفسارات الطلاب ولا يمثل جهة رسمية.
     </div>
 
     <div class="group-rules">
@@ -183,8 +184,8 @@
                 }
 
                 document.getElementById("result").innerHTML = `
-                    <p>نسبة الغياب المدخلة: ${attendance}%</p>
-                    <p>يمكنك الغياب ${remainingDays} أيام قبل الوصول للحرمان.</p>
+                    <p>نسبة الغياب المدخلة: (${attendance}%)</p>
+                    <p>يمكنك الغياب (${remainingDays}) أيام قبل الوصول للحرمان.</p>
                     <p class="${warningClass}">${warning}</p>
                 `;
 
