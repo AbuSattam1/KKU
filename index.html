@@ -189,13 +189,13 @@
                     warning = "تنبيه: وصلت إلى الإنذار الثاني (15%)";
                     warningClass = "warning2";
                 } else if (attendance >= maxAbsence) {
-                    warning = "تحذير: لقد تجاوزت نسبة الغياب المسموحة، سيتم حرمانك!";
+                    warning = "تحذير: متوقع حرمانك راجع دكتور المادة!";
                     warningClass = "warning3";
                 }
 
                 document.getElementById("result").innerHTML = `
                     <p>نسبة الغياب المدخلة: (${attendance}%)</p>
-                    <p>يمكنك الغياب (${remainingDays}) أيام قبل الوصول للحرمان.</p>
+                    <p>يمكنك غياب (${remainingDays}) محاضرة قبل الوصول للحرمان.</p>
                     <p class="${warningClass}">${warning}</p>
                 `;
 
@@ -212,7 +212,7 @@
             } else if (attendance >= 10 && attendance < 20) {
                 tips = "نصيحة: حاول تقليل الغياب عن طريق تنظيم جدولك.";
             } else {
-                tips = "نصيحة: تواصل مع مدرسيك للحصول على المساعدة إذا كنت تواجه صعوبات.";
+                tips = "نصيحة: تواصل مع دكاترتك للحصول على المساعدة إذا كنت تواجه صعوبات.";
             }
             document.getElementById("tips").textContent = tips;
         }
@@ -223,8 +223,8 @@
                     title: 'شارك نسبة غيابك',
                     text: `نسبة غيابي: ${lastAttendance}%
                     
-يمكنني الغياب ${lastRemainingDays} أيام قبل الوصول للحرمان.
-يرجى ملاحظة أن جميع الحسابات تقريبية وليست دقيقة بنسبة 100%.
+يمكنني الغياب في ${lastRemainingDays} محاضرة قبل الوصول للحرمان.
+يرجى ملاحظة أن جميع الحسابات تقريبية وليست دقيقة بنسبة (100%).
 
 موقع حساب الغياب لجامعة الملك خالد KKU:
 
