@@ -84,6 +84,15 @@
             margin-top: 20px;
             color: #333;
         }
+        .group-link {
+            color: #006400; /* أخضر غامق */
+            text-decoration: underline;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .empty-line {
+            margin-top: 10px; /* سطر فارغ */
+        }
     </style>
 </head>
 <body>
@@ -125,7 +134,8 @@
     </div>
     
     <div class="group-note">
-        <span class="group-link">للدخول إلى مجموعة جامعة الملك خالد يرجى الضغط على الصورة</span><br>
+        <span class="group-link">للدخول إلى مجموعة جامعة الملك خالد يرجى الضغط على الصورة</span>
+        <div class="empty-line"></div>
         نود التنويه أن القروب من عمل طلاب متطوعين يهدف للإجابة على استفسارات الطلاب ولا يمثل جهة رسمية.
     </div>
 
@@ -164,7 +174,7 @@
             const maxAbsence = (type === "normal") ? 25 : 20;
 
             if (attendance > 0) {
-                const remainingDays = (maxAbsence / attendance).toFixed(1);
+                const remainingDays = Math.floor(maxAbsence / attendance); // إزالة الأعداد العشرية
 
                 lastAttendance = attendance;
                 lastRemainingDays = remainingDays;
