@@ -3,82 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حساب الغياب - جامعة الملك خالد (KKU)</title>
+    <title>حساب الغياب - جامعة الملك خالد KKU</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e0f7e0; /* لون خلفية أخضر فاتح */
+            background-color: #add8e6; /* أزرق فاتح */
             text-align: center;
-            padding: 10px;
-            margin: 0;
+            padding: 20px;
         }
         h1 {
-            color: #388e3c; /* أخضر داكن */
-            font-size: 22px;
-            margin: 10px 0;
+            color: #336699;
+            font-size: 24px;
         }
         .container {
-            background-color: #ffffff;
+            background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            max-width: 90%; /* أقصى عرض مرن */
+            padding: 20px;
+            max-width: 400px;
             margin: auto;
         }
         input, select, button {
             width: 100%;
-            padding: 12px;
-            margin: 8px 0;
+            padding: 10px;
+            margin: 10px 0;
             border-radius: 5px;
             border: 1px solid #ccc;
-            box-sizing: border-box;
         }
         button {
-            background-color: #388e3c; /* أخضر داكن */
-            color: #ffffff;
+            background-color: #336699;
+            color: #fff;
             border: none;
             cursor: pointer;
         }
         button:hover {
-            background-color: #2e7d32; /* أخضر داكن أغمق */
+            background-color: #28527a;
         }
-        .result, .note, .tips {
-            margin-top: 15px;
+        .result {
+            margin-top: 20px;
             font-weight: bold;
         }
         .warning1 {
-            color: #d32f2f; /* أحمر */
+            color: red;
         }
         .warning2 {
-            color: #d32f2f;
+            color: red;
             text-decoration: underline;
         }
         .warning3 {
-            color: #c62828; /* أحمر داكن */
+            color: darkred;
             text-decoration: underline;
             font-weight: bold;
         }
+        .note {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #777;
+        }
+        .tips {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
         .share-button {
-            background-color: #4caf50; /* أخضر متوسط */
-            color: #ffffff;
+            background-color: #FF5733;
+            color: #fff;
             border: none;
             padding: 10px;
             cursor: pointer;
             margin-top: 10px;
         }
         .share-button:hover {
-            background-color: #43a047; /* أخضر أغمق */
+            background-color: #c73720;
         }
         .group-rules {
-            background-color: #c8e6c9; /* لون خلفية أخضر فاتح */
-            border: 1px solid #a5d6a7;
+            background-color: #ffeb3b; /* لون خلفية أصفر */
+            border: 1px solid #fbc02d;
             border-radius: 8px;
             padding: 15px;
             margin-top: 20px;
             color: #333;
         }
         .group-link {
-            color: #1b5e20; /* أخضر غامق */
+            color: #006400; /* أخضر غامق */
             text-decoration: underline;
             font-weight: bold;
             margin-top: 10px;
@@ -86,22 +93,10 @@
         .empty-line {
             margin-top: 10px; /* سطر فارغ */
         }
-        canvas {
-            margin-top: 20px;
-            max-width: 100%; /* لجعل الرسم البياني يتناسب مع الشاشات الصغيرة */
-        }
-        .logo {
-            width: 80%; /* عرض الشعار */
-            max-width: 100px; /* الحد الأقصى للعرض */
-            margin: 20px auto; /* مركز الشعار */
-        }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <img src="https://upload.wikimedia.org/wikipedia/ar/7/75/%D8%B4%D8%B9%D8%A7%D8%B1_%D8%AC%D8%A7%D9%85%D8%B9%D8%A9_%D8%A7%D9%84%D9%85%D9%84%D9%83_%D8%AE%D8%A7%D9%84%D8%AF.png" alt="شعار جامعة الملك خالد" class="logo">
-
-    <h1>حساب الغياب - جامعة الملك خالد (KKU)</h1>
+    <h1>حساب الغياب - جامعة الملك خالد KKU</h1>
 
     <div class="container">
         <label for="language">اختر اللغة</label>
@@ -125,9 +120,7 @@
         <div class="tips" id="tips"></div>
         <div class="note" id="note">يرجى ملاحظة أن جميع الحسابات تقريبية وليست دقيقة بنسبة (100%).</div>
 
-        <button class="share-button" onclick="shareSite()">شارك نسبة الغياب</button>
-
-        <canvas id="attendanceChart" width="400" height="200"></canvas>
+        <button class="share-button" onclick="shareSite()">شارك الموقع</button>
     </div>
 
     <div class="disclaimer">
@@ -136,7 +129,7 @@
     
     <div class="image-link">
         <a href="https://t.me/kku_4" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/ar/7/75/%D8%B4%D8%B9%D8%A7%D8%B1_%D8%AC%D8%A7%D9%85%D8%B9%D8%A9_%D8%A7%D9%84%D9%85%D9%84%D9%83_%D8%AE%D8%A7%D9%84%D8%AF.png" alt="شعار جامعة الملك خالد" class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/ar/7/75/%D8%B4%D8%B9%D8%A7%D8%B1_%D8%AC%D8%A7%D9%85%D8%B9%D8%A9_%D8%A7%D9%84%D9%85%D9%84%D9%83_%D8%AE%D8%A7%D9%84%D8%AF.png" alt="شعار جامعة الملك خالد" width="100">
         </a>
     </div>
     
@@ -157,7 +150,6 @@
     <script>
         let lastAttendance = 0;
         let lastRemainingDays = 0;
-        let attendanceChart;
 
         function changeLanguage() {
             const lang = document.getElementById("language").value;
@@ -182,7 +174,7 @@
             const maxAbsence = (type === "normal") ? 25 : 20;
 
             if (attendance > 0) {
-                const remainingDays = Math.floor(maxAbsence - attendance);
+                const remainingDays = Math.floor(maxAbsence / attendance); // إزالة الأعداد العشرية
 
                 lastAttendance = attendance;
                 lastRemainingDays = remainingDays;
@@ -208,7 +200,6 @@
                 `;
 
                 provideTips(attendance);
-                updateChart(attendance, type);
             } else {
                 alert("يرجى إدخال نسبة غياب صحيحة.");
             }
@@ -224,65 +215,6 @@
                 tips = "نصيحة: تواصل مع دكاترتك للحصول على المساعدة إذا كنت تواجه صعوبات.";
             }
             document.getElementById("tips").textContent = tips;
-        }
-
-        function updateChart(attendance, type) {
-            const maxAbsence = (type === "normal") ? 25 : 20;
-            const remainingAbsence = maxAbsence - attendance;
-
-            const ctx = document.getElementById('attendanceChart').getContext('2d');
-
-            const data = {
-                labels: ['إنذار أول (10%)', 'إنذار ثاني (15%)', `حرمان (${maxAbsence}%)`, 'الغياب المتبقي'],
-                datasets: [{
-                    label: 'نسبة الغياب',
-                    data: [10, 15, maxAbsence, remainingAbsence],
-                    backgroundColor: [
-                        '#81c784',  // إنذار أول: أخضر فاتح
-                        '#e57373',  // إنذار ثاني: أحمر فاتح
-                        '#c62828',  // حرمان: أحمر غامق
-                        '#388e3c'   // الغياب المتبقي: أخضر داكن
-                    ],
-                    borderColor: [
-                        '#81c784', 
-                        '#e57373', 
-                        '#c62828', 
-                        '#388e3c'
-                    ],
-                    borderWidth: 1,
-                }]
-            };
-
-            const config = {
-                type: 'pie',
-                data: data,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    label += Math.round(context.raw) + '%';
-                                    return label;
-                                }
-                            }
-                        }
-                    },
-                }
-            };
-
-            if (attendanceChart) {
-                attendanceChart.destroy();
-            }
-
-            attendanceChart = new Chart(ctx, config);
         }
 
         function shareSite() {
